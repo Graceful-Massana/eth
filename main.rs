@@ -37,12 +37,6 @@ fn main() -> anyhow::Result<()> {
     let gateway_addr = Ipv4Addr::from_str(GATEWAY_IP)?;
     let static_ip = Ipv4Addr::from_str(DEVICE_IP)?;
 
-    let gpio12 = pins.gpio12;
-    let mut phy = PinDriver::output(gpio12)?;
-    let _ = phy.set_high()?;
-    // let mphy = Mutex::new(phy);
-    // let lphy =mphy.lock();
-
     // Make sure to configure ethernet in sdkconfig and adjust the parameters below for your hardware
     let eth_driver = EthDriver::new_rmii(
         peripherals.mac,
